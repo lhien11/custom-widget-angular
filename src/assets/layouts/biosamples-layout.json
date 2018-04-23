@@ -1,0 +1,83 @@
+[
+  { "key": "filter_cases", "title": "Filter Cases" },
+  {
+    "type": "section",
+    "title": "Stage",
+    "expandable": true,
+    "expanded": true,
+    "items": [
+      {
+        "key": "stage",
+        "type": "checkboxes",
+        "titleMap": [
+          { "value": "Active", "name": "Active" },
+          { "value": "Unassigned", "name": "Unassigned" }
+
+        ]
+      }
+    ]
+
+  },
+  {
+    "type": "section",
+    "title": "Priority",
+    "expandable": true,
+    "expanded": true,
+    "items": [{
+      "key": "priority",
+      "type": "checkboxes",
+      "titleMap": [
+        { "value": "low", "name": "low" },
+        { "value": "middle", "name": "middle" },
+        { "value": "high", "name": "high" }
+
+      ]
+    }
+    ]
+
+  },
+  {
+    "type": "section",
+    "title": "Time",
+    "expandable": true,
+    "expanded": true,
+    "items": [
+      { "key": "time.start_date", "notitle": true, "type": "date", "placeholder": "start date" },
+      { "key": "time.end_date", "notitle": true, "type": "date", "placeholder": "end date" }
+    ]
+  },
+
+  {
+    "type": "section",
+    "title": "Notes",
+    "expandable": true,
+    "expanded": true,
+    "items": [
+      {
+        "key": "notes", "type": "text", "notitle":true
+      }
+    ]
+
+  },
+  {
+    "type": "section", 
+    "option": true,
+    "title": "Queue",
+    "expandable": true, 
+    "expanded": true, 
+    "items":[{
+      "key": "queue",
+      "type": "taxon-widget",
+      "enum": ["Yes", "No", "Maybe"]
+
+
+
+    }]
+  }
+
+
+  
+
+
+
+]

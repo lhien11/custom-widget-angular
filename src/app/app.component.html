@@ -1,0 +1,24 @@
+<div style="text-align:center">
+  <h1>{{ title }}</h1>
+</div>
+
+<div>
+  <json-schema-form
+    loadExternalAssets="true"
+    [schema]="mySchema"
+    [layout]="myJsonFormLayout"
+    [options]="jsonFormOptions"
+    (onChanges)="onChanges($event)"
+    (onSubmit)="onSubmit($event)"
+    (isValid)="isValid($event)"
+    (validationErrors)="validationErrors($event)">
+  </json-schema-form>
+</div>
+
+<div>
+  <h2>Validation Output</h2>
+  <div 
+    *ngIf="prettyValidationErrors"
+    [innerHTML]="prettyValidationErrors"></div>
+  <div *ngIf="formIsValid">Valid!</div> 
+</div>
