@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import { SchemaService } from './services/schema.service';
 import { HttpClient } from '@angular/common/http';
-import { TaxonWidgetComponent } from './custom-widgets/taxon-widget.component';
+import { CheckboxesWidget } from './custom-widgets/checkboxes-widget.component';
 import { JsonSchemaFormComponent, WidgetLibraryService, JsonPointer } from 'angular2-json-schema-form';
 
 @Component({
@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.widgetLibraryService.registerWidget('taxon-widget', 
-    TaxonWidgetComponent);
+    this.widgetLibraryService.registerWidget('idemia-checkboxes', 
+    CheckboxesWidget);
     this.setSchema();
     this.setFormLayout();
   }

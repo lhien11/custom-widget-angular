@@ -61,17 +61,16 @@
   },
   {
     "type": "section", 
-    "option": true,
     "title": "Queue",
     "expandable": true, 
     "expanded": true, 
     "items":[{
       "key": "queue",
-      "type": "taxon-widget",
-      "enum": ["Yes", "No", "Maybe"]
-
-
-
+      "title": "All",
+      "disableAll": false,
+      "type": "idemia-checkboxes",
+      "multiple": true, 
+      "enum": [ "Unassigned", "Active"]
     }]
   }
 
@@ -81,3 +80,5 @@
 
 
 ]
+
+

@@ -2,30 +2,33 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TaxonWidgetComponent } from './taxon-widget.component';
+import { CheckboxesWidget } from './checkboxes-widget.component';
 import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import { MaterialModule } from '../material.module';
+
 
 @NgModule({
     declarations: [
-        TaxonWidgetComponent
+        CheckboxesWidget
     ],
     imports: [
         CommonModule,
         FormsModule,
+        MaterialModule,
         ReactiveFormsModule
     ],
     exports: [
-        TaxonWidgetComponent
+        CheckboxesWidget
     ],
     entryComponents: [
-        TaxonWidgetComponent
+        CheckboxesWidget
     ],
     providers: [ JsonSchemaFormService ]
 })
-export class CustomWidgetsModule {
+export class CustomCheckboxesWidgetsModule {
     static forRoot(): ModuleWithProviders {
         return {
-            ngModule: CustomWidgetsModule,
+            ngModule: CheckboxesWidget,
             providers: [ JsonSchemaFormService ] }
     }
 }

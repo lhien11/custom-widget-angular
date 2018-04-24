@@ -33,8 +33,13 @@
       "type": "string"
     },
     "queue": {
-      "type": "string", 
-      "enum": ["Yes", "No", "Maybe"]
+      "type": "array", 
+      "items":{
+        "type": "string", 
+        "enum": ["Unassigned", "Active"]
+
+      }
+
 
     }
 

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { CustomWidgetsModule } from './custom-widgets/custom-widgets.module';
+import { CustomCheckboxesWidgetsModule } from './custom-widgets/custom-checkboxes-widgets.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -10,6 +10,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   JsonSchemaFormModule, Bootstrap4FrameworkModule, JsonSchemaFormService, MaterialDesignFramework, MaterialDesignFrameworkModule
 } from 'angular2-json-schema-form';
+
+import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 
@@ -22,8 +24,9 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialDesignFrameworkModule,
+    MaterialModule,
     JsonSchemaFormModule.forRoot(MaterialDesignFrameworkModule),
-    CustomWidgetsModule
+    CustomCheckboxesWidgetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

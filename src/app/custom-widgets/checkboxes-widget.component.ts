@@ -1,15 +1,21 @@
+import { TitleMapItem } from './../../lib/src/json-schema-form.service';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, AbstractControl } from '@angular/forms';
 
-import { JsonSchemaFormService, TitleMapItem } from '../../json-schema-form.service';
-import { buildFormGroup, buildTitleMap, hasOwn, JsonPointer } from '../../shared';
+import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import {  buildFormGroup, buildTitleMap, hasOwn, JsonPointer } from '../.././lib/src/shared';
 
-// TODO: Change this to use a Selection List instead?
-// https://material.angular.io/components/list/overview
-
+  
 @Component({
-  selector: 'material-checkboxes-widget',
+  selector: 'idemia-checkboxes',
   template: `
+  <div>
+
+
+  <ul class="checkbox-list" [class.horizontal-list]="horizontalList">
+  <div *ngIf="!options?.disableAll">
+  <li>
   <mat-checkbox type="checkbox"
   [checked]="allChecked"
   [color]="options?.color || 'primary'"
@@ -20,37 +26,44 @@ import { buildFormGroup, buildTitleMap, hasOwn, JsonPointer } from '../../shared
   (change)="updateAllValues($event)">
   <span class="checkbox-name" [innerHTML]="options?.name"></span>
 </mat-checkbox>
-<label *ngIf="options?.title"
+
+  <label *ngIf="options?.title"
   class="title"
   [class]="options?.labelHtmlClass || ''"
   [style.display]="options?.notitle ? 'none' : ''"
-  [innerHTML]="options?.title"></label>
-<ul class="checkbox-list" [class.horizontal-list]="horizontalList">
-  <li *ngFor="let checkboxItem of checkboxList"
-    [class]="options?.htmlClass || ''">
-    <mat-checkbox type="checkbox"
-      [(ngModel)]="checkboxItem.checked"
-      [color]="options?.color || 'primary'"
-      [disabled]="controlDisabled || options?.readonly"
-      [name]="checkboxItem?.name"
-      (blur)="options.showErrors = true"
-      (change)="updateValue()">
-      <span class="checkbox-name" [innerHTML]="checkboxItem?.name"></span>
-    </mat-checkbox>
+  [innerHTML]="options?.title">
+
+  </label>
   </li>
-</ul>
-<mat-error *ngIf="options?.showErrors && options?.errorMessage"
-  [innerHTML]="options?.errorMessage"></mat-error>
-</div>`,
+  </div>
+    <li *ngFor="let checkboxItem of checkboxList"
+      [class]="options?.htmlClass || ''">
+      <mat-checkbox type="checkbox"
+        [(ngModel)]="checkboxItem.checked"
+        [color]="options?.color || 'primary'"
+        [disabled]="controlDisabled || options?.readonly"
+        [name]="checkboxItem?.name"
+        (blur)="options.showErrors = true"
+        (change)="updateValue()">
+        <span class="checkbox-name" [innerHTML]="checkboxItem?.name"></span>
+      </mat-checkbox>
+    </li>
+  </ul>
+  <mat-error *ngIf="options?.showErrors && options?.errorMessage"
+    [innerHTML]="options?.errorMessage"></mat-error>
+    </div>`,
 styles: [`
-.title { font-weight: bold; }
-.checkbox-list { list-style-type: none; }
-.horizontal-list > li { display: inline-block; margin-right: 10px; zoom: 1; }
+
+.title { font-weight: italic; }
+.checkbox-list { list-style-type: none;  }
+.horizontal-list > li { align: left; display: inline-block; margin-right: 10px; zoom: 1; }
 .checkbox-name { white-space: nowrap; }
 mat-error { font-size: 75%; }
+mat-checkbox-frame { border: none important!}
 `],
+
 })
-export class MaterialCheckboxesComponent implements OnInit {
+export class CheckboxesWidget implements OnInit {
   formControl: AbstractControl;
   controlName: string;
   controlValue: any;
@@ -70,6 +83,7 @@ export class MaterialCheckboxesComponent implements OnInit {
 
   ngOnInit() {
     this.options = this.layoutNode.options || {};
+    console.log("this.otions: ", this.options);
     this.horizontalList = this.layoutNode.type === 'checkboxes-inline' ||
       this.layoutNode.type === 'checkboxbuttons';
     this.jsf.initializeControl(this);
@@ -85,6 +99,8 @@ export class MaterialCheckboxesComponent implements OnInit {
   }
 
   get allChecked(): boolean {
+    //console.log("I am in the allChecked()");
+    // console.log("checked: ", this.checkboxList)
     return this.checkboxList.filter(t => t.checked).length === this.checkboxList.length;
   }
 
